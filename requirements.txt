@@ -1,0 +1,50 @@
+Django~=2.0.6
+
+#END OF REQUIREMENTS
+-------------------------------------------------
+#API TOKEN
+
+import requests
+my_domain = 'Munash.pythonanywhere.com'
+username = 'Munash'
+token = '795d53579dd8d231f95ddc9051b2e9d7f95a7355'
+
+response = requests.post(
+    'https://www.pythonanywhere.com/api/v0/user/{username}/webapps/{domain}/reload/'.format(
+        username=username, domain=my_domain
+    ),
+    headers={'Authorization': 'Token {token}'.format(token=token)}
+)
+if response.status_code == 200:
+    print('All OK')
+else:
+    print('Got unexpected status code {}: {!r}'.format(response.status_code, response.content))
+------------------------------------------------------------------------
+#COMMAND PROMPT 
+
+Microsoft Windows [Version 10.0.17134.228]
+(c) 2018 Microsoft Corporation. All rights reserved.
+
+C:\Users\Munashe>cd djangodir
+
+C:\Users\Munashe\djangodir>myvenv\Scripts\activate
+
+(myvenv) C:\Users\Munashe\djangodir>django-admin.exe startproject mysite .
+
+(myvenv) C:\Users\Munashe\djangodir>
+------------------------------------------------
+
+C:\Users\Munashe\djangodir>python manage.py startapp blog
+
+C:\Users\Munashe\djangodir>python manage.py makemigrations blog
+Migrations for 'blog':
+  blog\migrations\0001_initial.py
+    - Create model Post
+
+C:\Users\Munashe\djangodir>python manage.py migrate blog
+Operations to perform:
+  Apply all migrations: blog
+Running migrations:
+  Applying blog.0001_initial... OK
+
+C:\Users\Munashe\djangodir>
